@@ -4,7 +4,8 @@ const jwtKey = process.env.JWT_SECRET || 'add a .env file to root of project wit
 
 // quickly see what this file exports
 module.exports = {
-	authenticate
+	authenticate,
+	jwtKey
 };
 
 // implementation details
