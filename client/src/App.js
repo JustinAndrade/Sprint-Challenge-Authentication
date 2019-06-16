@@ -11,12 +11,8 @@ function App() {
 		<div className="App">
 			<nav>
 				<h1>Dad Jokes</h1>
-				<Link to="/Login" component={Login}>
-					Login
-				</Link>
-				<Link to="/Register" Component={Register}>
-					Register
-				</Link>
+				<Link to="/Login">Login</Link>
+				<Link to="/Register">Register</Link>
 			</nav>
 			<Route path="/Login" component={Login} />
 			<Route path="/Register" component={Register} />

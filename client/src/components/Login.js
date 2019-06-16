@@ -19,13 +19,12 @@ class Login extends Component {
 		try {
 			const { username, password } = this.state;
 
-			const result = await api.post('/auth/login', {
+			const result = await api.post('/login', {
 				username,
 				password
 			});
 
-			localStorage.setItem('token', result.data.authToken);
-			this.props.history.push('/users');
+			localStorage.setItem('token', result.data.token);
 		} catch (err) {
 			console.log(err);
 		}

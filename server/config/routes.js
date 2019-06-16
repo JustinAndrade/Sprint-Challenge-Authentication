@@ -32,11 +32,7 @@ function register(req, res) {
 	Users.add(user)
 		.then((saveUser) => {
 			const token = generateToken(saveUser);
-			if (token) {
-				res.status(201).json({ message: `Welcome ${user.username}`, authToken: token });
-			} else {
-				console.log('error creating token');
-			}
+			res.status(200).json({ message: `Welcome ${user.username}`, token });
 		})
 		.catch((error) => {
 			res.status(500).json(error);

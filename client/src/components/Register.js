@@ -20,13 +20,12 @@ class Register extends Component {
 		try {
 			const { username, password } = this.state;
 
-			const result = await api.post('/auth/login', {
+			const result = await api.post('/register', {
 				username,
 				password
 			});
 
 			localStorage.setItem('token', result.data.token);
-			this.props.history.push('/users');
 		} catch (err) {
 			console.log(err);
 		}
