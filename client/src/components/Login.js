@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import api from '../helpers/api';
 
 class Login extends Component {
@@ -29,6 +30,9 @@ class Login extends Component {
 			console.log(err);
 		}
 	};
+
+	componentDidMount() {}
+
 	render() {
 		return (
 			<div>
@@ -55,4 +59,4 @@ class Login extends Component {
 	}
 }
 
-export default Login;
+export default withRouter(Login);

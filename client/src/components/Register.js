@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import api from '../helpers/api';
 
 class Register extends Component {
@@ -24,7 +25,6 @@ class Register extends Component {
 				username,
 				password
 			});
-
 			localStorage.setItem('token', result.data.token);
 		} catch (err) {
 			console.log(err);
@@ -57,4 +57,4 @@ class Register extends Component {
 	}
 }
 
-export default Register;
+export default withRouter(Register);

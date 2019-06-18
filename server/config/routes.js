@@ -8,7 +8,8 @@ const { authenticate, jwtKey } = require('../auth/authenticate');
 module.exports = (server) => {
 	server.post('/api/register', register);
 	server.post('/api/login', login);
-	server.get('/api/jokes', authenticate, getJokes);
+	server.get('/api/jokes', getJokes);
+	server.get('/api/users', getUsers);
 };
 
 function generateToken(user) {
@@ -21,6 +22,16 @@ function generateToken(user) {
 			expiresIn: '1h'
 		}
 	);
+}
+
+async function getUsers(req, res) {
+	Users.find()
+		.then((users) => {
+			res.status(200).json(users);
+		})
+		.catch((err) => {
+			res.status(404).json({ message: err });
+		});
 }
 
 function register(req, res) {
