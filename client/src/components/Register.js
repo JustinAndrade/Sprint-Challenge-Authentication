@@ -25,7 +25,9 @@ class Register extends Component {
 				username,
 				password
 			});
+
 			localStorage.setItem('token', result.data.token);
+			this.props.history.push('/jokes');
 		} catch (err) {
 			console.log(err);
 		}

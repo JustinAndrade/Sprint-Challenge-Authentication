@@ -8,7 +8,7 @@ const { authenticate, jwtKey } = require('../auth/authenticate');
 module.exports = (server) => {
 	server.post('/api/register', register);
 	server.post('/api/login', login);
-	server.get('/api/jokes', getJokes);
+	server.get('/api/jokes', authenticate, getJokes);
 	server.get('/api/users', getUsers);
 };
 

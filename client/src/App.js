@@ -16,6 +16,11 @@ class App extends React.Component {
 		}
 	};
 
+	logoutHandler = (e) => {
+		localStorage.removeItem('token');
+		this.props.history.push('login');
+	};
+
 	async componentDidMount() {
 		try {
 			const result = await api.get('/users');
@@ -29,19 +34,30 @@ class App extends React.Component {
 	}
 
 	render() {
-		return (
-			<div className="App">
-				<nav>
-					<h1>Dad Jokes</h1>
-					<Link to="/Login">Login</Link>
-					<Link to="/Register">Register</Link>
-					<Link to="/Jokes">Jokes</Link>
-				</nav>
-				<Route path="/Login" component={Login} />
-				<Route path="/Register" component={Register} />
-				<Route path="/Jokes" component={Jokes} />
-			</div>
-		);
+		if (!localStorage.getItem('token')) {
+			return (
+				<div className="App">
+					<nav>
+						<h1>Dad Jokes</h1>
+						<Link to="/Login">Login</Link>
+						<Link to="/Register">Register</Link>
+					</nav>
+					<Route path="/Login" component={Login} />
+					<Route path="/Register" component={Register} />
+				</div>
+			);
+		} else {
+			return (
+				<div className="App">
+					<nav>
+						<h1>Dad Jokes</h1>
+						<Link to="/Jokes">Jokes</Link>
+						<button onClick={this.logoutHandler}>logout</button>
+					</nav>
+					<Route path="/Jokes" component={Jokes} />
+				</div>
+			);
+		}
 	}
 }
 

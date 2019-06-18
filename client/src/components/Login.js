@@ -26,6 +26,7 @@ class Login extends Component {
 			});
 
 			localStorage.setItem('token', result.data.token);
+			this.props.history.push('/jokes');
 		} catch (err) {
 			console.log(err);
 		}
